@@ -15,8 +15,9 @@ function App({ youtube }) {
   };
 
   const search = query => {
-    youtube.search(query)
-    .then(videos => setVideos(videos));
+    setSelected(null);
+      youtube.search(query)
+      .then(videos => setVideos(videos));
   };
   
 
@@ -28,7 +29,7 @@ function App({ youtube }) {
 
   return (
     <div className={styles.app}>
-      <SearchHeader onSearch={search} />
+      <SearchHeader onSearch={search}/>
       <section className={styles.content}> 
         {selected &&  (
         <div className={styles.detail}>
