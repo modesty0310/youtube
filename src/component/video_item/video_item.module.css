@@ -1,6 +1,13 @@
 .containner {
-  width: 50%;
   padding: 0.2em;
+}
+
+.containner.grid {
+  width: 50%;
+}
+
+.containner.list {
+  width: 100%;
 }
 
 .video {

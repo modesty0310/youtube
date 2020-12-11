@@ -7,8 +7,9 @@ import VideoList from './component/video_list/video_list';
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
-  const [slected, setSelected] = useState(null);
-  
+  const [selected, setSelected] = useState(null);
+
+
   const selectVideo = video => {
     setSelected(video);
   };
@@ -28,12 +29,17 @@ function App({ youtube }) {
   return (
     <div className={styles.app}>
       <SearchHeader onSearch={search} />
-      <div>
-        {
-        slected && <VideoDetail video={slected} />
-        }
-        <VideoList videos={videos} onClickVideo={selectVideo} />
-      </div>
+      <section className={styles.content}> 
+        {selected &&  (
+        <div className={styles.detail}>
+          <VideoDetail video={selected} />
+        </div> 
+        )}
+        <div className={styles.list}>
+          <VideoList videos={videos} onClickVideo={selectVideo} display={selected ? 'list' : 'grid'}/>
+        </div>
+      </section>
+
       </div>
   )
 }
